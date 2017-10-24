@@ -1,0 +1,6 @@
+sorted dictionaries
+redirects for user error
+look at test app (numbers as strings) (CHANGED NAMES, FIX)
+CHECK FIT AGAINST STYLE GUIDES
+KEEP PORT OPEN
+Footer can’t cover the X axis name

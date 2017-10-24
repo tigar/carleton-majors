@@ -1,0 +1,96 @@
+// Created by Liv Phillips, Veronica Child, & Adam Tigar. 
+// Documentation for the second phase of our webapp project, outlining the tables we will create, and examples of the queries we will allow for. UPDATED during phase 3.
+
+-------------------------------------------------------------------------------------------
+
+CREATE TABLE majors (
+    major_name text,
+    major_id integer NOT NULL
+);
+
+CREATE TABLE majors_years (
+    year integer NOT NULL,
+    major_id integer NOT NULL,
+    male_count integer,
+    female_count integer,
+);
+
+-------------------------------------------------------------------------------------------
+Query Examples:
+
+SYNOPSIS: Get a list of all major data for a year.
+
+QUERY (GET): /years/<year>/
+
+RESPONSE: a list of dictionaries, each of which describes one major with keys 'year' 'major_name', 'male_count', & 'female_count'
+
+EXAMPLE: http://whatever.com/years/2008/
+
+[{'year': 2001, major_name': 'African/African‐American Studies', 'male_count': 75, 'female_count': 86},
+ {'year': 2001, 'major_name': 'American Studies', 'male_count': 65, 'female_count': 76},
+ {'year': 2001, 'major_name': 'Art: History', 'male_count': 45, 'female_count': 34}]
+
+-------------------------------------------------------------------------------------------
+
+SYNOPSIS: Get a list of yearly data for a major name.
+
+QUERY (GET): /years/<major>/
+
+RESPONSE: a list of dictionaries, each of which describes one year with keys 'year', 'major_name', 'male_count', & 'female_count'
+
+EXAMPLE: http://whatever.com/years/american+studies/
+
+[{'year': 2001, 'major_name': 'American Studies', 'male_count': 75, 'female_count': 86},
+ {'year': 2002, 'major_name': 'American Studies', 'male_count': 65, 'female_count': 76},
+ {'year': 2003, 'major_name': 'American Studies', 'male_count': 54, 'female_count': 23}]
+
+-------------------------------------------------------------------------------------------
+
+SYNOPSIS: Get a list of yearly data for a major id.
+
+QUERY (GET): /years/<id>/
+
+RESPONSE: a list of dictionaries, each of which describes one year with keys 'year', 'major_name', 'male_count', & 'female_count'
+
+EXAMPLE: http://whatever.com/years/american+studies/
+
+[{'year': 2001, 'major_name': 'American Studies', 'male_count': 75, 'female_count': 86},
+ {'year': 2002, 'major_name': 'American Studies', 'male_count': 65, 'female_count': 76},
+ {'year': 2003, 'major_name': 'American Studies', 'male_count': 54, 'female_count': 23}]
+
+-------------------------------------------------------------------------------------------
+
+SYNOPSIS: Get a list of one year's data for a major.
+
+QUERY (GET): /majors/<major_name>/<year>/
+
+RESPONSE: a list of one dictionary, which describes one year for one major with keys 'year', 'major_name' 'male_count', & 'female_count'
+
+EXAMPLE: http://whatever.com/majors/american+studies/2008/
+
+[{'year': 2008, 'major_name': 'American Studies', 'male_count': 75, 'female_count': 86}]
+
+-------------------------------------------------------------------------------------------
+
+SYNOPSIS: Get a major from its ID.
+
+QUERY (GET): /majors/<id>/
+
+RESPONSE: a list of a singular dictionary (since each id is unique), which has the keys 'major_id', & 'major_name'
+
+EXAMPLE: http://whatever.com/majors/1/
+
+[{'major_id': 6, 'major_name':'Computer Science'}]
+
+-------------------------------------------------------------------------------------------
+
+SYNOPSIS: Get an ID from its major.
+
+QUERY (GET): /majors/<major_name>/
+
+RESPONSE: a list of a singular dictionary (since each major is unique), which has the keys 'major_id', & 'major_name'.
+
+EXAMPLE: http://whatever.com/majors/computer+science/
+
+[{'major_id': 6, 'major_name': 'Computer Science'}]
+

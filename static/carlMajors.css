@@ -1,0 +1,314 @@
+/*
+    carlMajors.css
+    Veronica Child, Liv Phillips, Adam Tigar
+    27 April 2016
+
+    Styles for the Carleton Majors "api.py" webapp
+    Thanks to Steve Hatcher for "Sticky Footer" Solution and Mike Riethmuller for font scaling.
+*/
+
+$min_width: 400;
+$max_width: 800;
+
+$min_font: 12;
+$max_font: 24;
+
+* {margin:0; padding:0;}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    margin-left: 1vw;
+    margin-right: 1vw;
+}
+
+#wrapper {
+	min-height:100%;
+	margin-bottom:200px;
+	position: relative;
+}
+
+#bannerContainer {
+    /*min-width: 800px;*/
+    max-width: inherit;
+    max-height: 69.5px;
+    padding-bottom: 2.5vw;
+}
+
+#banner {
+    max-width: 100vw;
+    max-height: 95px;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    padding-bottom: 2vw;
+    padding-top: 2vw;
+    height: inherit;
+    position:relative;
+    background-color: #0b5091; /*Carleton Blue*/
+}
+
+#logo {
+    float: left;
+    width: 10vw;
+    max-width: 100px;
+    margin-right: 10px;
+ }
+
+#fontContainer{
+    padding-top: 1.7vw;
+    max-height: 45.5px;
+}
+
+.responsive-type {
+    font-size: 20px;
+    display: block;
+    overflow: hidden;
+    position: relative
+    padding: .2em .5em;
+    margin: 0;
+}
+
+.responsive-type:hover {
+    color: yellow;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+@media (max-width: 827px) and (min-width: 600px) {
+  .responsive-type {
+    font-size: 4vw;
+    /* for no calc support: 4vw @ 600px = 24px */
+    font-size: calc( 20px + (40 - 20) * ( (100vw - 600px) / ( 827 - 600) ));
+  }
+}
+@media (min-width: 828px) {
+  .responsive-type {
+    font-size: 62px;
+    /* for no calc support - will jump */
+    font-size: 40px;
+  }
+}
+
+#backButton {
+    background-color: #e7e7e7;
+    border: none;
+    font-family: Georgia;
+    color: black;
+    border-radius: 0.5vw;
+    margin-top: 1vw;
+    margin-bottom: 1vw;
+    padding: .5vw 1vw;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+#menu{
+    display:inline;
+    float:right;
+    position: relative;
+    text-align: center;
+    margin-top: -50px;
+}
+
+.nav ul {
+    list-style-type: none;
+    margin:0;
+    padding:0;
+    overflow: hidden;
+    background-color: #0b5091; /*Carleton blue*/
+}
+
+.nav li {
+    list-style-type: none;
+    float: left;
+    margin-right: 10px;
+}
+
+.nav li a {
+    font-family:"Georgia", sans;
+    display: block;
+    color: white;
+    padding: 8px;
+    text-align: center;
+    text-decoration: underline;
+}
+
+.nav li a:hover{
+    color: yellow;
+}
+
+#results_table a{
+    color: #0b5091;
+    text-decoration: underline;
+}
+
+#results_table a:hover {
+   background-color: #D8D8D8;
+   text-decoration: none;
+   cursor: pointer;
+}
+
+table {
+color: #333;
+font-family: Helvetica, Arial, sans-serif;
+width: 640px;
+border-collapse:
+collapse; border-spacing: 0;
+}
+
+td, th {
+border: 1px solid transparent; /* No more visible border */
+height: 30px;
+transition: all 0.3s;  /* Simple transition for hover effect */
+}
+
+th {
+background: #DFDFDF;  /* Darken header a bit */
+font-weight: bold;
+}
+
+td {
+background: #FAFAFA;
+text-align: center;
+}
+
+@media (max-width:827px) {
+    #menu{
+        visibility: hidden;
+    }
+}
+
+#main {
+    overflow:auto;
+    padding-bottom: 130px;
+
+    max-width:100%;
+    max-height:100%;
+}
+
+.view {
+   width: 300px;
+   height: 300px;
+   margin-top: 50px;
+   margin-left: 5%;
+   float: left;
+   border: 10px solid #fff;
+   overflow: hidden;
+   position: relative;
+   text-align: center;
+   -webkit-box-shadow: 1px 1px 2px #e6e6e6;
+   -moz-box-shadow: 1px 1px 2px #e6e6e6;
+   box-shadow: 1px 1px 2px #e6e6e6;
+   cursor: default;
+}
+
+.view .mask {
+	background-color: rgba(255,214,0,0.3); /* Changes the background color of slide box */
+	transform: translateX(-300px);
+	opacity: 1;
+	transition: all 0.35s ease-in-out;
+}
+
+.view:hover .mask {
+	transform: translateX(0px);
+}
+
+.view:hover p.info{
+    opacity: 1;
+    transition-delay: 0.1s;
+}
+
+.view .mask,.view .content {
+   width: inherit;
+   height: 100%;
+   position: absolute;
+   overflow: hidden;
+   top: 0;
+   left: 0;
+}
+
+.view img.info {
+    height: inherit;
+    width: inherit;
+    display: block-inline;
+    position: relative;
+    transition: all 0.45s ease-in-out;
+}
+.view h2.info {
+   background: rgba(255, 255, 255, 0.5); /* colour for the banner/bu */
+   color: #000;
+   box-shadow: 0px 1px 3px rgba(159, 141, 140, 0.5);
+   text-transform: uppercase;
+   color: #fff;
+   text-align: center;
+   position: relative;
+   font-size: 17px;
+   padding: 10px;
+   background: rgba(0, 0, 0, 0.8); /* color of the header box */
+   margin: 20px 0 0 0;
+}
+.view p.info {
+    opacity: 0;
+    color: #111;
+    transition: all 0.1s linear;
+   font-family: Georgia, serif;
+   font-style: italic;
+   font-size: 12px;
+   position: relative;
+   color: #fff;
+   padding: 10px 20px 20px;
+   text-align: center;
+}
+.view a.info {  /* info button settings */
+   display: inline-block;
+   text-decoration: none;
+   padding: 7px 14px;
+   margin-top: 125px;
+   margin-left: 0%;
+   background: #000;
+   color: #fff; /* text color */
+   text-transform: uppercase;
+   -webkit-box-shadow: 0 0 1px #000; /* compatability */
+   -moz-box-shadow: 0 0 1px #000;
+   box-shadow: 0 0 1px #000;
+}
+
+.view button.info {
+   display: inline-block;
+   font-family: Georgia;
+   text-decoration: none;
+   padding: 7px 14px;
+   margin-top: 125px;
+   margin-left: 0%;
+   background: #000;
+   color: #fff; /* text color */
+   text-transform: uppercase;
+   -webkit-box-shadow: 0 0 1px #000; /* compatability */
+   -moz-box-shadow: 0 0 1px #000;
+   box-shadow: 0 0 1px #000;
+}
+
+/*table {
+    border-collapse: collapse;
+}
+
+th, td {
+    border-bottom: 1px solid #ddd;
+    padding: 20px;
+}*/
+
+#footer {
+    position:relative;
+    margin-top: -100px; /* Less than or equal to main*/
+    height: 100px; /*Equal to margin-top unless want white space*/
+    min-width: 828px;
+    width: 100%;
+    clear:both;
+
+    padding-top: 75px;
+    text-align:center;
+    background-color: #0b5091; /*Carleton blue*/
+    color:white;
+}
